@@ -1,4 +1,4 @@
-/* Task 1: Bits Manipulation
+/* Task 1: Bits Manipukation
    Name: Ahmed Mohamed Badawy */
 
 #include <stdio.h>
@@ -17,8 +17,9 @@ unsigned int number,position,cases;
 
 int main()
 {
-    number= 59;
-    printf("Current bits state:  00111011\n");
+
+    printf("Please enter your number:\n");
+scanf("%d",&number);
 printf("Please specify the bit you want  :\n");
 scanf("%d",&position);
 
