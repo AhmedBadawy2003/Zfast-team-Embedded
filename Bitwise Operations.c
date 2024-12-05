@@ -1,4 +1,4 @@
-/* Task 1: Bits Manipukation
+/* Task 1: Bits Manipulation
    Name: Ahmed Mohamed Badawy */
 
 #include <stdio.h>
