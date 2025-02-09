@@ -1,0 +1,86 @@
+/*
+ * main.c
+ *
+ * Created: 2/9/2025 1:38:42 PM
+ *  Author: badaw
+ */ 
+
+#include <xc.h>
+#include <avr/io.h>
+#include <util/delay.h>
+
+#define F_CPU 8000000UL
+#define motor_pin1 PA0
+#define motor_pin2 PA1
+#define motor_pin3 PA2
+#define motor_pin4 PA3
+
+
+void motor(void){
+	//to set the pin for motor as output the bit in the ddr register must be 1
+	DDRA |= (1<< PA0);
+    DDRA |= (1<<PA1);
+	DDRA |= (1<<PA2);
+	DDRA |= (1 << PA3);
+}
+void forward(void);
+void backward(void);
+void left(void);
+void right(void);
+void stop(void);
+
+int main(void)
+{
+    while(1){
+		forward();
+		_delay_ms(5000);
+		stop();
+		
+	     backward();
+		_delay_ms(5000);
+		stop();
+		
+		left();
+		_delay_ms(5000);
+		stop();
+		
+		right();
+		_delay_ms(5000);
+		stop();
+		
+		_delay_ms(5000);
+		
+	}
+}
+
+void forward(void){
+	 
+	PORTA|=(1<<PA0);
+		PORTA&=~(1<<PA1);
+	PORTA|=(1<<PA2);
+		PORTA&=~(1<<PA3);
+}
+void backward(void){
+	PORTA|=(1<<PA1);
+		PORTA&=~(1<<PA0);
+	PORTA|=(1<<PA3);
+		PORTA&=~(1<<PA2);
+}
+void left(void){
+	PORTA|=(1<PA2);
+		PORTA&=~(1<<PA0);
+	PORTA|=(1<<PA1);
+		PORTA&=~(1<<PA3);
+}
+void right(void){
+	PORTA|=(1<<PA0);
+		PORTA&=~(1<<PA1);
+	PORTA|=(1<<PA3);
+		PORTA&=~(1<<PA2);
+}
+void stop(){
+	PORTA&=~(1<<PA0);
+	PORTA&=~(1<<PA1);
+	PORTA&=~(1<<PA2);
+	PORTA&=~(1<<PA3);
+}
